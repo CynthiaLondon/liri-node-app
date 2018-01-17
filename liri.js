@@ -1,12 +1,19 @@
 
 require("dotenv").config();
 
+
+
 var request = require("request");
 
 // Import the FS package for read/write.
 
-var spotify = new Spotify(keys.spotify);
-var client = new Twitter(keys.twitter);
+var Twitter = require("twitter");
+
+// Import the Spotify npm package.
+var Spotify = require("node-spotify-api");
+
+// Import the request npm package.
+var request = require("request");
 var operator = process.argv[2];
 var fs = require('fs');
 
