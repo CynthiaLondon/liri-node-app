@@ -1,8 +1,12 @@
 
 require("dotenv").config();
-var request = require('request');
 
-var spotify = require('spotify');
+var request = require("request");
+
+// Import the FS package for read/write.
+
+var spotify = new Spotify(keys.spotify);
+var client = new Twitter(keys.twitter);
 var operator = process.argv[2];
 var fs = require('fs');
 
@@ -22,7 +26,7 @@ switch (operator) {
         });
 
         client.get('statuses/user_timeline', {
-            screen_name: 'cynthialondon',
+            screen_name: 'cynthialondon7',
             count: 20
         }, function(error, tweets, response) {
             for (i = 0; i < tweets.length; i++) {
@@ -77,12 +81,11 @@ switch (operator) {
                 console.log("Title: " + JSON.parse(body)["Title"])
                 console.log("Release Year: " + JSON.parse(body)["Year"])
                 console.log("Rating: " + JSON.parse(body)["imdbRating"])
+                console.log("Rotten Tomatoes rating: " + JSON.parse(body)["tomatoRating"])
                 console.log("Country: " + JSON.parse(body)["Country"])
                 console.log("Language: " + JSON.parse(body)["Language"])
                 console.log("Plot: " + JSON.parse(body)["Plot"])
                 console.log("Starring: " + JSON.parse(body)["Actors"])
-                console.log("Rotten Tomatoes rating: " + JSON.parse(body)["tomatoRating"])
-                console.log("Rotten Tomatoes info: " + JSON.parse(body)["tomatoURL"])
             }
 
         });
